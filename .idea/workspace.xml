@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a3d4f16-9b57-4e8f-9890-79b0a03743c4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/controllers/Follow.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/api/middlewares/authenticated.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/routes/Follow.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/api/services/jwt.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/User.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/routes/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/routes/User.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,62 +27,65 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="210">
+              <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/index.js">
+        <entry file="file://$PROJECT_DIR$/api/controllers/Follow.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+            <state relative-caret-position="695">
+              <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/routes/User.js">
+        <entry file="file://$PROJECT_DIR$/api/routes/Follow.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="10" column="66" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
+            <state relative-caret-position="180">
+              <caret line="6" column="73" selection-start-line="6" selection-start-column="73" selection-end-line="6" selection-end-column="73" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/api/controllers/User.js">
+        <entry file="file://$PROJECT_DIR$/api/models/Follow.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="3" column="54" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="54" />
+            <state relative-caret-position="240">
+              <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/middlewares/authenticated.js">
+        <entry file="file://$PROJECT_DIR$/api/models/User.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+            <state relative-caret-position="150">
+              <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/services/jwt.js">
+        <entry file="file://$PROJECT_DIR$/api/models/Publication.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="30" />
+            <state relative-caret-position="210">
+              <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/package.json">
+        <entry file="file://$PROJECT_DIR$/api/models/Message.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="1" selection-start-column="1" selection-end-column="1" />
+            <state relative-caret-position="300">
+              <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -100,6 +108,7 @@
     </dirStrings>
   </component>
   <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/api" />
   </component>
   <component name="IdeDocumentHistory">
@@ -113,18 +122,22 @@
         <option value="$PROJECT_DIR$/api/routes/user.js" />
         <option value="$PROJECT_DIR$/api/models/User.js" />
         <option value="$PROJECT_DIR$/api/index.js" />
-        <option value="$PROJECT_DIR$/api/app.js" />
         <option value="$PROJECT_DIR$/api/services/jwt.js" />
         <option value="$PROJECT_DIR$/api/middlewares/authenticated.js" />
-        <option value="$PROJECT_DIR$/api/routes/User.js" />
         <option value="$PROJECT_DIR$/api/controllers/User.js" />
+        <option value="$PROJECT_DIR$/api/routes/User.js" />
+        <option value="$PROJECT_DIR$/api/controllers/follow.js" />
+        <option value="$PROJECT_DIR$/api/app.js" />
+        <option value="$PROJECT_DIR$/api/routes/Follow.js" />
+        <option value="$PROJECT_DIR$/api/controllers/Follow.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="25" />
-    <option name="width" value="1920" />
-    <option name="height" value="986" />
+    <option name="x" value="428" />
+    <option name="y" value="27" />
+    <option name="width" value="915" />
+    <option name="height" value="468" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -148,7 +161,32 @@
               <item name="socialMedia" type="b2602c69:ProjectViewProjectNode" />
               <item name="socialMedia" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="socialMedia" type="b2602c69:ProjectViewProjectNode" />
+              <item name="socialMedia" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="socialMedia" type="b2602c69:ProjectViewProjectNode" />
+              <item name="socialMedia" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="socialMedia" type="b2602c69:ProjectViewProjectNode" />
+              <item name="socialMedia" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="uploads" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="socialMedia" type="b2602c69:ProjectViewProjectNode" />
+              <item name="socialMedia" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="uploads" type="462c0819:PsiDirectoryNode" />
+              <item name="users" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -164,7 +202,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -192,18 +230,24 @@
       <workItem from="1567769744435" duration="6929000" />
       <workItem from="1568208470420" duration="598000" />
       <workItem from="1568331455615" duration="1141000" />
-      <workItem from="1568332742387" duration="10080000" />
+      <workItem from="1568332742387" duration="10788000" />
+      <workItem from="1568502017329" duration="63000" />
+      <workItem from="1568504911571" duration="1058000" />
+      <workItem from="1568506119658" duration="1434000" />
+      <workItem from="1568938079940" duration="9397000" />
+      <workItem from="1568980026168" duration="1778000" />
+      <workItem from="1569026327262" duration="1541000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23396000" />
+    <option name="totallyTimeSpent" value="39375000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="986" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.116622694" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26437995" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -215,9 +259,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.33017752" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.3289941" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3289941" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -248,45 +292,22 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/package.json" />
-    <entry file="file://$PROJECT_DIR$/api/models/User.js">
+    <entry file="file://$PROJECT_DIR$/api/package-lock.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/Publication.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/Follow.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/Message.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
+        <state relative-caret-position="-92019" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/middlewares/authenticated.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -304,24 +325,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/middlewares/authenticated.js">
+    <entry file="file://$PROJECT_DIR$/api/uploads/users/8XCofeztZhiSa6OdkljKbHnw.png" />
+    <entry file="file://$PROJECT_DIR$/api/uploads/users/9_TJo6k70ibCVMZVlsi9xzfY.png" />
+    <entry file="file://$PROJECT_DIR$/api/uploads/users/880oBz2Jn0dY4NTBpfCk3eEf.png" />
+    <entry file="file://$PROJECT_DIR$/api/uploads/users/dxE6SDulFonoFq68-9znJB21.png" />
+    <entry file="file://$PROJECT_DIR$/api/uploads/users/KSAeePsSaUTAxhIiNLMmTTFC.png" />
+    <entry file="file://$PROJECT_DIR$/api/uploads/users/QcOhPgOy3NTlUXMePrpwkCm2.png" />
+    <entry file="file://$PROJECT_DIR$/api/uploads/users/rV7RmOgmsDx5OIXh7Jm8rgdL.png" />
+    <entry file="file://$PROJECT_DIR$/api/uploads/users/rHpH01HyxhL_F3C4PU6BSZ_H.png" />
+    <entry file="file://$PROJECT_DIR$/api/uploads/users/SswFxDnnv11Md3LgbqdPxPQ9.png" />
+    <entry file="file://$PROJECT_DIR$/api/uploads/users/EjxJxFPT0wVcWxI7YLXT8qKu.png" />
+    <entry file="file://$PROJECT_DIR$/api/uploads/users/hfRmIINuTnn7insKJZlWH_ww.png" />
+    <entry file="file://$PROJECT_DIR$/api/uploads/users/ZE8VE4Lukpx5VCRqZCTfy-PU.png" />
+    <entry file="file://$PROJECT_DIR$/api/uploads/users/5Qm2gxAOFV0jr_tICI0nWMkw.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/uploads/users/wo2YRq6pa9VB347omgk_2q6K.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/controllers/User.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+        <state relative-caret-position="522">
+          <caret line="251" column="1" lean-forward="true" selection-start-line="251" selection-start-column="1" selection-end-line="251" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/routes/User.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="10" column="66" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
+        <state relative-caret-position="480">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/controllers/User.js">
+    <entry file="file://$PROJECT_DIR$/api/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="3" column="54" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="54" />
+        <state relative-caret-position="210">
+          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/controllers/Follow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="695">
+          <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/routes/Follow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="6" column="73" selection-start-line="6" selection-start-column="73" selection-end-line="6" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models/User.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models/Publication.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models/Message.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models/Follow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
         </state>
       </provider>
     </entry>

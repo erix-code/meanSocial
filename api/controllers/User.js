@@ -1,7 +1,10 @@
-let User = require('../models/User');
+let user = require('../models/User');
 let bcrypt = require('bcrypt-nodejs');
 let jwt = require('../services/jwt');
 let mongoosePaginate = require('mongoose-pagination');
+let fs = require('fs');
+let path = require('path');
+
 //Funcion de prueba
 function home(req, res) {
     res.status(200).send({
@@ -21,7 +24,7 @@ function tests(req, res) {
 //Funcion para almacenar datos de un usuario
 function saveUser(req, res) {
     var params = req.body;
-    let user = new User();
+    let user = new user();
 
     if (params.name && params.surname &&
         params.nick && params.email &&
@@ -35,7 +38,7 @@ function saveUser(req, res) {
         user.image = null;
 
         //Controlar si existen usuarios duplicados
-        User.find
+        user.find
         ({
             $or: [
                 {email: user.email},
@@ -85,7 +88,7 @@ function loginUser(req, res) {
     let email = params.email;
     let password = params.password;
 
-    User.findOne({
+    user.findOne({
         email: email
     }, (error, user) => {
         if (error) return res.status(500).send({message: 'Error in the Request'});
@@ -110,6 +113,7 @@ function loginUser(req, res) {
                 }
             });
         } else {
+
             return res.status(404).send({message: 'El usuario no se ha podido identificar'});
         }
     });
@@ -119,7 +123,7 @@ function loginUser(req, res) {
 
 function getUser(req, res) {
     let userId = req.params.id;
-    User.findById(userId, (err, user) => {
+    user.findById(userId, (err, user) => {
         if (err) return res.status(500).send({
             message: 'Error en la peticion'
         });
@@ -138,7 +142,7 @@ function getUsers(req, res) {
         page = req.params.page;
     }
     let itemsPerPage = 5;
-    User.find().sort('_id').paginate(page, itemsPerPage, (err, users, total) => {
+    user.find().sort('_id').paginate(page, itemsPerPage, (err, users, total) => {
         if (err) return res.status(500).send({
             message: 'Error en la peticion'
         });
@@ -148,16 +152,112 @@ function getUsers(req, res) {
         return res.status(200).send({
             users,
             total,
-            pages: Math.ceil(total/itemsPerPage)
+            pages: Math.ceil(total / itemsPerPage)
         });
     });
 }
 
+//Edicion de datos de usuario
+function updateUser(req, res) {
+    let userId = req.params.id;
+    let update = req.body;
+    //Borrar la propiedad Password
+    delete update.password;
+    if (userId != req.user.sub) {
+        return res.status(500).send({message: "No tienes permisos para actualizar los datos del usuario"})
+    }
+    user.findByIdAndUpdate(userId, update, {new: true}, (err, userUpdated) => {
+        if (err) return res.status(500).send({
+            message: 'Error en la peticion'
+        });
+        if (!userUpdated) return res.status(404).send({
+            message: 'No se ha podido actualizar el Usuario'
+        });
+        return res.status(200).send({
+            user: userUpdated
+        });
+    });
+}
+
+// Subir archivos de imagen/Avatar de usuario
+function uploadImage(req, res) {
+    let userId = req.params.id;
+
+    if (req.files) {
+        let file_path = req.files.image.path;
+        console.log(file_path);
+
+        let file_split = file_path.split('/');
+        console.log(file_split);
+
+        let file_name = file_split[2];
+        console.log(file_split[2]);
+
+        let ext_split = file_name.split('.');
+        let file_ext = ext_split[1];
+        console.log(file_ext);
+        if (userId !== req.user.sub) {
+            console.log('No tienes permisos para actualizar los datos del usuario');
+            //Se debe poner un return para que acabe esta funcion si no no acabaria ya que el return debe ser desde la funcion
+            return removeFilesOfUploads(res, file_path, "No tienes permisos para actualizar los datos del usuario");
+        }
+        if (file_ext === 'png' || file_ext === 'jpg' || file_ext === 'jpeg' || file_ext === 'gif') {
+            //acutualizar documento de usuario logueado
+            user.findByIdAndUpdate(userId, {image: file_name}, {new: true}, (err, userUpdated) => {
+                if (err) return res.status(500).send({
+                    message: 'Error en la peticion'
+                });
+                if (!userUpdated) return res.status(404).send({
+                    message: 'No se ha podido actualizar el Usuario'
+                });
+                return res.status(200).send({
+                    user: userUpdated
+                });
+            });
+        } else {
+            //En caso de que la extension sea mala
+            console.log("NO ES UNA EXTENSION VALIDA")
+            return removeFilesOfUploads(res, file_path, "Extension no valida");
+        }
+    } else {
+        return res.status(200).send({
+            message: 'No se han subido imagenes'
+        });
+    }
+}
+
+
+function removeFilesOfUploads(res, file_path, message) {
+    fs.unlink(file_path, (err) => {
+        return res.status(200).send({
+            message: message
+        });
+    });
+}
+
+function getImageFile(req,res){
+    let image_file = req.params.imageFile;
+    let path_file = './uploads/users/'+image_file;
+
+    fs.exists(path_file,(exists)=>{
+        if (exists){
+            res.sendFile(path.resolve(path_file));
+        }
+        else{
+            res.status(200).send({
+                message: 'No existe la imagen'
+            });
+        }
+    });
+}
 module.exports = {
     home,
     tests,
     saveUser,
     loginUser,
     getUser,
-    getUsers
+    getUsers,
+    updateUser,
+    uploadImage,
+    getImageFile
 };
