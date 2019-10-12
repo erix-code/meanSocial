@@ -1,5 +1,5 @@
 let mongoose = require('mongoose');
-let schema = mongoose.Schema();
+let schema = mongoose.Schema;
 
 let PublicationSchema = schema({
     text: String,

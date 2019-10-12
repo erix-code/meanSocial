@@ -1,11 +1,14 @@
 let mongoose = require('mongoose');
-let schema = mongoose.Schema;
+let Schema = mongoose.Schema;
 
-let MessageSchema = schema({
+let MessageSchema = Schema({
     text: String,
+    viewed: String,
     created_at:String,
-    emitter:{type: schema.ObjectID, ref:'User'},
-    receiver:{type: schema.ObjectID, ref:'User'}
+// emitter:{type: Schema.objectId,ref:'User'},
+// receiver:{type: Schema.objectId,ref:'User'}
+    emitter: { type:Schema.ObjectId,ref:'User'},
+    receiver: { type:Schema.ObjectId,ref:'User'}
 });
 
-module.exports = MessageSchema('Message',MessageSchema);
+module.exports = mongoose.model('Message',MessageSchema);
