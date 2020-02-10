@@ -44,7 +44,9 @@ function getReceivedMessages(req,res){
         page = req.params.page;
     }
     let itemsPerPage = 4;
-    Message.find({receiver: userId}).populate('emitter','name surname image nick _id').paginate(page,itemsPerPage,(err,messages,total)=>{
+    Message.find({receiver: userId}).populate('emitter','name surname image nick _id')
+        .sort('-created_at')
+        .paginate(page,itemsPerPage,(err,messages,total)=>{
         if (err) return res.status(200).send({
             message: "Error en la peticion"
         });
@@ -65,7 +67,9 @@ function getEmmitMessages(req,res){
         page = req.params.page;
     }
     let itemsPerPage = 4;
-    Message.find({emitter: userId}).populate('emitter receiver','name surname image nick _id').paginate(page,itemsPerPage,(err,messages,total)=>{
+    Message.find({emitter: userId}).populate('emitter receiver','name surname image nick _id')
+        .sort('-created_at')
+        .paginate(page,itemsPerPage,(err,messages,total)=>{
         if (err) return res.status(200).send({
             message: "Error en la peticion"
         });

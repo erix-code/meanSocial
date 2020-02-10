@@ -35,7 +35,7 @@ function saveUser(req, res) {
         user.name = params.name;
         user.surname = params.surname;
         user.nick = params.nick.toLowerCase();
-        user.email = params.email;
+        user.email = params.email.toLowerCase();
         user.role = 'ROLE_USER';
         user.image = null;
 
@@ -179,7 +179,7 @@ function getUsers(req, res) {
     if (req.params.page) {
         page = req.params.page;
     }
-    let itemsPerPage = 5;
+    let itemsPerPage = 4;
     User.find().sort('_id').paginate(page, itemsPerPage, (err, users, total) => {
         if (err) return res.status(500).send({
             message: 'Error en la peticion'
@@ -227,10 +227,10 @@ async function getCounterFollows(userId) {
     }).catch(err => {
         return handleError(err);
     });
-    let publications = await Publication.count({'user':userId}).exec().then((count) =>{
+    let publications = await Publication.count({'user': userId}).exec().then((count) => {
         return count;
-    }).catch(err =>{
-       return handleError(err);
+    }).catch(err => {
+        return handleError(err);
     });
     return {
         following: following,
@@ -287,17 +287,37 @@ function updateUser(req, res) {
     if (userId != req.user.sub) {
         return res.status(500).send({message: "No tienes permisos para actualizar los datos del usuario"})
     }
-    User.findByIdAndUpdate(userId, update, {new: true}, (err, userUpdated) => {
-        if (err) return res.status(500).send({
-            message: 'Error en la peticion'
+    User.find
+    ({
+        $or: [
+            {email: update.email},
+            {nick: update.nick}
+        ]
+    }).exec((error, users) => {
+        let isUserSet = false;
+        users.forEach((user) => {
+            if (user && user._id != userId) {
+                isUserSet = true;
+            }
         });
-        if (!userUpdated) return res.status(404).send({
-            message: 'No se ha podido actualizar el Usuario'
-        });
-        return res.status(200).send({
-            user: userUpdated
+        if (isUserSet) {
+            return res.status(500).send({
+                message: 'Los datos ya esta en uso'
+            });
+        }
+        User.findByIdAndUpdate(userId, update, {new: true}, (err, userUpdated) => {
+            if (err) return res.status(500).send({
+                message: 'Error en la peticion'
+            });
+            if (!userUpdated) return res.status(404).send({
+                message: 'No se ha podido actualizar el Usuario'
+            });
+            return res.status(200).send({
+                user: userUpdated
+            });
         });
     });
+
 }
 
 // Subir archivos de imagen/Avatar de usuario
@@ -324,7 +344,7 @@ function uploadImage(req, res) {
         }
         if (file_ext === 'png' || file_ext === 'jpg' || file_ext === 'jpeg' || file_ext === 'gif') {
             //acutualizar documento de usuario logueado
-            user.findByIdAndUpdate(userId, {image: file_name}, {new: true}, (err, userUpdated) => {
+            User.findByIdAndUpdate(userId, {image: file_name}, {new: true}, (err, userUpdated) => {
                 if (err) return res.status(500).send({
                     message: 'Error en la peticion'
                 });

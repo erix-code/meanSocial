@@ -24,7 +24,7 @@ function savePublication(req, res) {
     publication.text = params.text;
     publication.file = 'null';
     publication.user = req.user.sub;
-    publication.create_at = moment().unix();
+    publication.created_at = moment();
     publication.save((err, publicationStored) => {
         if (err) return res.status(500).send({
             message: 'Error al guardar la publicacion'
@@ -39,31 +39,69 @@ function savePublication(req, res) {
 }
 
 function getPublications(req, res) {
-    var page = 1;
+    let page = 1;
     if (req.params.page) {
         page = req.params.page;
     }
     var itemsPerPage = 4;
     var follows_clean = [];
     Follow.find({"user": req.user.sub}).populate('followed').exec().then((follows) => {
-        for (let i in follows) {
-            follows_clean.push(follows[i].followed._id);
-        }
-
-        Publication.find({user: {$in: follows_clean}}).sort('created_at').populate('user').paginate(page, itemsPerPage, (err, publications, total) => {
-
-            if (err) return res.status(404).send({message: 'Error devolver publicaciones' + err});
-            if (!publications) return res.status(500).send({message: 'No hay publicaciones'});
-
-            return res.status(200).send({
-                    total_items: total,
-                    pages: Math.ceil(total / itemsPerPage),
-                    page: page,
-                    publications
-                }
-            )
+        follows.forEach((follow) => {
+            follows_clean.push(follow.followed);
         });
+        follows_clean.push(req.user.sub);
+        Publication.find(
+            {user: {"$in": follows_clean}})
+            .sort('-created_at')
+            .populate('user')
+            .paginate(page, itemsPerPage,
+                (err, publications, total) => {
+                    if (err) return res.status(404).send({message: 'Error devolver publicaciones' + err});
+                    if (!publications) return res.status(500).send({message: 'No hay publicaciones'});
+
+                    return res.status(200)
+                        .send(
+                            {
+                                total_items: total,
+                                pages: Math.ceil(total / itemsPerPage),
+                                page: page,
+                                publications
+                            }
+                        )
+                });
     });
+
+}
+
+function getUserPublications(req, res) {
+    let page = 1;
+    if (req.params.page) {
+        page = req.params.page;
+    }
+    let user = req.params.sub;
+    if (req.params.user) {
+        user = req.params.user;
+    }
+    var itemsPerPage = 4;
+    Publication.find(
+        {user: user})
+        .sort('-created_at')
+        .populate('user')
+        .paginate(page, itemsPerPage,
+            (err, publications, total) => {
+                if (err) return res.status(404).send({message: 'Error devolver publicaciones' + err});
+                if (!publications) return res.status(500).send({message: 'No hay publicaciones'});
+
+                return res.status(200)
+                    .send(
+                        {
+                            total_items: total,
+                            pages: Math.ceil(total / itemsPerPage),
+                            page: page,
+                            publications
+                        }
+                    )
+            });
 
 }
 
@@ -113,23 +151,22 @@ function uploadImage(req, res) {
         console.log(file_ext);
 
         if (file_ext === 'png' || file_ext === 'jpg' || file_ext === 'jpeg' || file_ext === 'gif') {
-            Publication.findOne({user: req.user.sub,'_id':publicationId}).exec((err,publication)=>{
-               if (publication){
-                   Publication.findByIdAndUpdate(publicationId, {file: file_name}, {new: true}, (err, publicationUpdated) => {
-                       if (err) return res.status(500).send({
-                           message: 'Error en la peticion'
-                       });
-                       if (!publicationUpdated) return res.status(404).send({
-                           message: 'No se ha podido actualizar el Usuario'
-                       });
-                       return res.status(200).send({
-                           publication: publicationUpdated
-                       });
-                   });
-               }
-               else {
-                   return removeFilesOfUploads(res, file_path, "No tienes permisos para actulizar esta publicacion");
-               }
+            Publication.findOne({user: req.user.sub, '_id': publicationId}).exec((err, publication) => {
+                if (publication) {
+                    Publication.findByIdAndUpdate(publicationId, {file: file_name}, {new: true}, (err, publicationUpdated) => {
+                        if (err) return res.status(500).send({
+                            message: 'Error en la peticion'
+                        });
+                        if (!publicationUpdated) return res.status(404).send({
+                            message: 'No se ha podido actualizar el Usuario'
+                        });
+                        return res.status(200).send({
+                            publication: publicationUpdated
+                        });
+                    });
+                } else {
+                    return removeFilesOfUploads(res, file_path, "No tienes permisos para actulizar esta publicacion");
+                }
             });
             //acutualizar documento de usuario logueado
 
@@ -159,6 +196,7 @@ function getImageFile(req, res) {
         }
     });
 }
+
 function removeFilesOfUploads(res, file_path, message) {
     fs.unlink(file_path, (err) => {
         return res.status(200).send({
@@ -174,5 +212,6 @@ module.exports = {
     getPublication,
     deletePublication,
     uploadImage,
-    getImageFile
+    getImageFile,
+    getUserPublications
 };
